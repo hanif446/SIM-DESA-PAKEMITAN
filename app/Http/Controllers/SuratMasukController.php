@@ -12,6 +12,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class SuratMasukController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:surat_masuk_show', ['only' => 'index']);
+    }
     /**
      * Display a listing of the resource.
      *

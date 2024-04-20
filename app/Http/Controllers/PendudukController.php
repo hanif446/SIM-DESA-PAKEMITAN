@@ -10,6 +10,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class PendudukController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:penduduk_show', ['only' => 'index']);
+    }
     /**
      * Display a listing of the resource.
      *

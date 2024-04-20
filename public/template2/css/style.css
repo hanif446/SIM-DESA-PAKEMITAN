@@ -172,3 +172,8 @@
   margin-right: auto; /* Mengatur margin kanan */
 }
 
+.menu-bg .navbar-nav .nav-item.active .nav-link {
+  color: #1AB7D8 !important;
+}
+
+

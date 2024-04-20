@@ -17,11 +17,6 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('permission:user_show', ['only' => 'index']);
-        $this->middleware('permission:user_create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:user_update', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:user_detail', ['only' => 'show']);
-        $this->middleware('permission:user_delete', ['only' => 'destroy']);
-        $this->middleware('permission:edit_profil_update', ['only' => ['edit_profil', 'update_profil']]);
     }
     /**
      * Display a listing of the resource.

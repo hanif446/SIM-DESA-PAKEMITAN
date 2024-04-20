@@ -101,8 +101,20 @@
 				<td colspan="2">Mengetahui, </td>
 			</tr>
             <tr>
-                <td class="center">Kepala Desa <br><br><br><br>___________________________<br><br>{{ $kepala_desa->nama_pegawai }}<div style="margin-top: 4px;">{{ $kepala_desa->nip }}</div></td>
-                <td class="center">Kaur Keuangan <br><br><br><br>___________________________<br><br>{{ $kaur_keuangan->nama_pegawai }}<div style="margin-top: 4px;">{{ $kaur_keuangan->nip }}</div></td>
+                <td class="center">Kepala Desa <br><br><br><br>___________________________<br><br>
+                    @if(isset($kepala_desa))
+                        {{ $kepala_desa->nama_pegawai }}<div style="margin-top: 4px;">{{ $kepala_desa->nip }}</div>
+                    @else
+                        -
+                    @endif
+                </td>
+                <td class="center">Kaur Keuangan <br><br><br><br>___________________________<br><br>
+                    @if(isset($kaur_keuangan))
+                        {{ $kaur_keuangan->nama_pegawai }}<div style="margin-top: 4px;">{{ $kaur_keuangan->nip }}</div>
+                    @else
+                        -
+                    @endif
+                </td>
             </tr>
         </table>
         <p>Terima kasih</p>

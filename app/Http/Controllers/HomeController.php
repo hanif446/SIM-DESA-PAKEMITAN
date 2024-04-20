@@ -11,6 +11,10 @@ use App\Models\StrukturOrganisasi;
 use App\Models\Pegawai;
 use App\Models\Kontak;
 use App\Models\Galeri;
+use App\Models\Agenda;
+use App\Models\Pengumuman;
+use App\Models\Pengaduan;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -89,5 +93,49 @@ class HomeController extends Controller
 
         return view('homepage.galeri', compact('galeri_combined'));
     }
+
+    private $perPagePengumuman = 12;
+    public function pengumuman()
+    {
+        $pengumuman = [];
+
+        $pengumuman = Pengumuman::orderBy('created_at', 'DESC')->paginate($this->perPage);
+
+        return view('homepage.pengumuman', compact('pengumuman'));
+    }
+
+    private $perPageAgenda = 1;
+
+    public function agenda()
+    {
+        $agenda = Agenda::orderBy('created_at', 'DESC')->paginate($this->perPageAgenda);
+
+        return view('homepage.agenda', compact('agenda'));
+    }
+
+    public function pengumuman_detail($id)
+    {
+        $pengumuman = Pengumuman::findOrFail($id);
+        return view('homepage.pengumuman_detail', compact('pengumuman'));
+    }
+
+    public function pengaduan()
+    {
+        return view('homepage.pengaduan');
+    }
+
+    public function store_pengaduan(Request $request)
+    {
+        try {
+            $pengaduan = Pengaduan::create([
+                'judul' => $request->judul,
+                'deskripsi' => $request->deskripsi,
+            ]);
+            return redirect()->back()->with('success', 'Pengaduan berhasil dikirim!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal mengirim pengaduan. Silakan coba lagi.')->withErrors([$e->getMessage()]);
+        }
+    }
+
 
 }

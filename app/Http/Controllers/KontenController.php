@@ -19,6 +19,16 @@ use Illuminate\Support\Facades\Validator;
 
 class KontenController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:konten_visi_misi', ['only' => 'visi_misi']);
+        $this->middleware('permission:konten_sejarah', ['only' => 'sejarah']);
+        $this->middleware('permission:konten_geografis', ['only' => 'geografis']);
+        $this->middleware('permission:konten_demografi', ['only' => 'demografi']);
+        $this->middleware('permission:konten_struktur_organisasi', ['only' => 'struktur_organisasi']);
+        $this->middleware('permission:konten_kontak', ['only' => 'kontak']);
+        $this->middleware('permission:konten_galeri', ['only' => 'galeri']);
+    }
     public function visi_misi()
     {
         $visi_misi = VisiMisi::where('visi_misis.id', '=', 1)

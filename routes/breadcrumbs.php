@@ -212,7 +212,7 @@ Breadcrumbs::for('dashboard_surat_keluar_detail', function ( $trail, $surat_kelu
 // Dashboard > Pengumuman
 Breadcrumbs::for('dashboard_pengumuman', function ( $trail) {
     $trail->parent('dashboard');
-    $trail->push('Pengarsipan Pengumuman', route('pengumuman.index'));
+    $trail->push('Pengumuman', route('pengumuman.index'));
 });
 
 // Dashboard > Pengumuman > Tambah Pengumuman
@@ -230,7 +230,7 @@ Breadcrumbs::for('dashboard_pengumuman_edit', function ( $trail, $pengumuman) {
 // Dashboard > Agenda
 Breadcrumbs::for('dashboard_agenda', function ( $trail) {
     $trail->parent('dashboard');
-    $trail->push('Pengarsipan Agenda', route('agenda.index'));
+    $trail->push('Agenda Kegiatan Desa', route('agenda.index'));
 });
 
 // Dashboard > Agenda > Tambah Agenda
@@ -245,12 +245,11 @@ Breadcrumbs::for('dashboard_agenda_edit', function ( $trail, $agenda) {
     $trail->push('Edit Agenda', route('agenda.edit', ['agenda' => $agenda]));
 });
 
-// Dashboard > Agenda  > Detail Agenda
-Breadcrumbs::for('dashboard_agenda_detail', function ( $trail, $agenda) {
-    $trail->parent('dashboard_agenda');
-    $trail->push('Detail Agenda', route('agenda.show', ['agenda' => $agenda]));
+// Dashboard > Pengaduan Masyarakat
+Breadcrumbs::for('dashboard_pengaduan', function ( $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Pengaduan Masyarakat', route('pengaduan.index'));
 });
-
 
 // Dashboard > Roles
 Breadcrumbs::for('dashboard_roles', function ( $trail) {

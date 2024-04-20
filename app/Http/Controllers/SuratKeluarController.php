@@ -12,6 +12,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class SuratKeluarController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:surat_keluar_show', ['only' => 'index']);
+    }
     /**
      * Display a listing of the resource.
      *

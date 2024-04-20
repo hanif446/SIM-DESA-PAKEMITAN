@@ -26,78 +26,87 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('manage_jabatan',function($user){
+        Gate::define('manage_konten',function($user){
             return $user->hasAnyPermission([
-                'jabatan_show',
-                'jabatan_create',
-                'jabatan_update',
-                'jabatan_delete'
+                'konten_visi_misi',
+                'konten_sejarah',
+                'konten_geografis',
+                'konten_demografi',
+                'konten_struktur_organisasi',
+                'konten_kontak',
+                'konten_galeri'
             ]);
         });
 
-        Gate::define('manage_golongan_gaji',function($user){
+        Gate::define('manage_pengumuman',function($user){
             return $user->hasAnyPermission([
-                'golongan_gaji_show',
-                'golongan_gaji_create',
-                'golongan_gaji_update',
-                'golongan_gaji_delete'
+                'pengumuman_show'
+            ]);
+        });
+
+        Gate::define('manage_agenda',function($user){
+            return $user->hasAnyPermission([
+                'agenda_show'
             ]);
         });
 
         Gate::define('manage_pegawai',function($user){
             return $user->hasAnyPermission([
-                'pegawai_show',
-                'pegawai_create',
-                'pegawai_update',
-                'pegawai_detail',
-                'pegawai_delete'
+                'pegawai_show'
             ]);
         });
 
         Gate::define('manage_gaji_pokok_pegawai',function($user){
             return $user->hasAnyPermission([
-                'gaji_pokok_pegawai_show',
-                'gaji_pokok_pegawai_create',
-                'gaji_pokok_pegawai_update',
-                'gaji_pokok_pegawai_detail',
-                'gaji_pokok_pegawai_delete',
-                'gaji_pokok_pegawai_cetak'
+                'gaji_pokok_pegawai_show'
             ]);
         });
 
-        Gate::define('manage_gaji_ttp_pegawai',function($user){
+        Gate::define('manage_penduduk',function($user){
             return $user->hasAnyPermission([
-                'gaji_ttp_pegawai_show',
-                'gaji_ttp_pegawai_create',
-                'gaji_ttp_pegawai_update',
-                'gaji_ttp_pegawai_detail',
-                'gaji_ttp_pegawai_delete',
-                'gaji_ttp_pegawai_cetak'
+                'penduduk_show'
             ]);
         });
 
-        Gate::define('manage_edit_profil',function($user){
+        Gate::define('manage_kk',function($user){
             return $user->hasAnyPermission([
-                'edit_profil_update'
+                'kk_show'
+            ]);
+        });
+
+        Gate::define('manage_surat_masuk',function($user){
+            return $user->hasAnyPermission([
+                'surat_masuk_show'
+            ]);
+        });
+
+        Gate::define('manage_surat_keluar',function($user){
+            return $user->hasAnyPermission([
+                'surat_keluar_show'
+            ]);
+        });
+
+        Gate::define('manage_pembayaran',function($user){
+            return $user->hasAnyPermission([
+                'pembayaran_show'
+            ]);
+        });
+
+        Gate::define('manage_pengaduan',function($user){
+            return $user->hasAnyPermission([
+                'pengaduan_show'
             ]);
         });
 
         Gate::define('manage_users',function($user){
             return $user->hasAnyPermission([
-                'user_show',
-                'user_create',
-                'user_update',
-                'user_delete'
+                'user_show'
             ]);
         });
 
         Gate::define('manage_roles',function($user){
             return $user->hasAnyPermission([
-                'role_show',
-                'role_create',
-                'role_update',
-                'role_detail',
-                'role_delete'
+                'role_show'
             ]);
         });
     }

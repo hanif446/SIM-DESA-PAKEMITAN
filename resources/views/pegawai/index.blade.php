@@ -11,12 +11,10 @@
       <div class="col-md-12">
          <div class="card">
             <div class="card-header">
-                  @can('pegawai_create')
-                     <a href="{{route('pegawai.create')}}" class="btn btn-success float-right" role="button">
-                        Tambah Data
-                        <i class="fas fa-plus-square"></i>
-                     </a>
-                  @endcan
+                <a href="{{route('pegawai.create')}}" class="btn btn-success float-right" role="button">
+                Tambah Data
+                <i class="fas fa-plus-square"></i>
+                </a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -40,27 +38,21 @@
                             <td>{{ $p->jabatan}}</td>
                             <td>
                             <!-- detail -->
-                            @can('pegawai_detail')
-                                <a href="{{ route('pegawai.show', ['pegawai' => $p]) }}" class="btn btn-sm btn-warning" role="button">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                            @endcan
+                            <a href="{{ route('pegawai.show', ['pegawai' => $p]) }}" class="btn btn-sm btn-warning" role="button">
+                                <i class="fas fa-eye"></i>
+                            </a>
                             <!-- edit -->
-                            @can('pegawai_update')
-                                <a href="{{ route('pegawai.edit', ['pegawai' => $p]) }}" class="btn btn-sm btn-info" role="button">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-                            @endcan
+                            <a href="{{ route('pegawai.edit', ['pegawai' => $p]) }}" class="btn btn-sm btn-info" role="button">
+                                <i class="fas fa-edit"></i>
+                            </a>
                             <!-- delete -->
-                            @can('pegawai_delete')
-                                <form class="d-inline" role="alert" action="{{route('pegawai.destroy',['pegawai' => $p])}}" method="POST" alert-title = "Hapus Pegawai?" alert-text = "Apakah anda yakin ingin menghapus data ini?">
+                            <form class="d-inline" role="alert" action="{{route('pegawai.destroy',['pegawai' => $p])}}" method="POST" alert-title = "Hapus Pegawai?" alert-text = "Apakah anda yakin ingin menghapus data ini?">
                             @csrf
                             @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger">
                                       <i class="fas fa-trash"></i>
                                     </button>
-                                </form>
-                            @endcan                    
+                            </form>                  
                             </td>
                         </tr>
                         @endforeach

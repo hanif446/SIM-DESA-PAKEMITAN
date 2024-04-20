@@ -50,22 +50,20 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <!-- print -->
-                                    @can('gaji_pokok_pegawai_cetak')
                                     <button class="btn btn-sm btn-secondary" type="submit" role="button">
                                         <i class="fas fa-print"></i>
                                     </button>
-                                    @endcan
+                                    
                                 </div>
                             </div>
                         </div>
                     </form>
                     <div class="col-md-3">
-                        @can('gaji_pokok_pegawai_create')
                         <a href="{{route('gaji-pokok.create')}}" class="btn btn-success float-right" role="button">
                             Tambah Data
                             <i class="fas fa-plus-square"></i>
                         </a>
-                        @endcan
+                        
                     </div>
                 </div>
             </div>            
@@ -93,13 +91,11 @@
                             <td>Rp. {{number_format($gp->jumlah_gaji, 0, ',', '.')}}</td>
                             <td>
                                 <!-- edit -->
-                                @can('gaji_pokok_pegawai_update')
                                 <a href="{{ route('gaji-pokok.edit', ['gaji_pokok' => $gp]) }}" class="btn btn-sm btn-info" role="button">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                @endcan
+                                
                                 <!-- delete -->
-                                @can('gaji_pokok_pegawai_delete')
                                 <form class="d-inline" role="alert" action="{{route('gaji-pokok.destroy',['gaji_pokok' => $gp])}}" method="POST" alert-title = "Hapus Gaji Pegawai?" alert-text = "Apakah anda yakin ingin menghapus data ini?">
                                 @csrf
                                 @method('DELETE')
@@ -107,7 +103,7 @@
                                       <i class="fas fa-trash"></i>
                                     </button>
                                 </form>
-                                @endcan                    
+                                                    
                             </td>
                         </tr>
                         @endforeach

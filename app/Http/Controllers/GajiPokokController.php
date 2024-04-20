@@ -18,11 +18,6 @@ class GajiPokokController extends Controller
     public function __construct()
     {
         $this->middleware('permission:gaji_pokok_pegawai_show', ['only' => 'index']);
-        $this->middleware('permission:gaji_pokok_pegawai_create', ['only' => ['create', 'store']]);
-        $this->middleware('permission:gaji_pokok_pegawai_update', ['only' => ['edit', 'update']]);
-        $this->middleware('permission:gaji_pokok_pegawai_detail', ['only' => 'show']);
-        $this->middleware('permission:gaji_pokok_pegawai_delete', ['only' => 'destroy']);
-        $this->middleware('permission:gaji_pokok_pegawai_cetak', ['only' => 'cetak']);
     }
     /**
      * Display a listing of the resource.

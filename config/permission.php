@@ -3,57 +3,51 @@
 return [
 
     'authorities' => [
+        'manage_konten' => [
+            'konten_visi_misi',
+            'konten_sejarah',
+            'konten_geografis',
+            'konten_demografi',
+            'konten_struktur_organisasi',
+            'konten_kontak',
+            'konten_galeri'
+        ],
+        'manage_pengumuman' => [
+            'pengumuman_show'
+        ],
+        'manage_agenda' => [
+            'agenda_show'
+        ],
         'manage_pegawai' => [
-            'pegawai_show',
-            'pegawai_create',
-            'pegawai_update',
-            'pegawai_detail',
-            'pegawai_delete'
+            'pegawai_show'
         ],
         'manage_gaji_pokok_pegawai' => [
-            'gaji_pokok_pegawai_show',
-            'gaji_pokok_pegawai_create',
-            'gaji_pokok_pegawai_update',
-            'gaji_pokok_pegawai_delete',
-            'gaji_pokok_pegawai_detail',
-            'gaji_pokok_pegawai_cetak'
+            'gaji_pokok_pegawai_show'
         ],
-        'manage_gaji_ttp_pegawai' => [
-            'gaji_ttp_pegawai_show',
-            'gaji_ttp_pegawai_create',
-            'gaji_ttp_pegawai_update',
-            'gaji_ttp_pegawai_delete',
-            'gaji_ttp_pegawai_detail',
-            'gaji_ttp_pegawai_cetak'
+        'manage_penduduk' => [
+            'penduduk_show'
         ],
-        'manage_jabatan' => [
-            'jabatan_show',
-            'jabatan_create',
-            'jabatan_update',
-            'jabatan_delete'
+        'manage_kk' => [
+            'kk_show'
         ],
-        'manage_golongan_gaji' => [
-            'golongan_gaji_show',
-            'golongan_gaji_create',
-            'golongan_gaji_update',
-            'golongan_gaji_delete'
+        'manage_pembayaran' => [
+            'pembayaran_show'
+        ],
+        'manage_pengaduan' => [
+            'pengaduan_show'
+        ],
+        'manage_surat_masuk' => [
+            'surat_masuk_show'
+        ],
+        'manage_surat_keluar' => [
+            'surat_keluar_show'
         ],
         'manage_roles' => [
-            'role_show',
-            'role_create',
-            'role_update',
-            'role_detail',
-            'role_delete'
+            'role_show'
         ],
         'manage_users' => [
-            'user_show',
-            'user_create',
-            'user_update',
-            'user_delete'
-        ],
-        'manage_edit_profil' => [
-            'edit_profil_update'
-        ],
+            'user_show'
+        ]
         
     ],
 

@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -19,56 +18,26 @@ class PermissionTableSeeder extends Seeder
     {
         $authorities = config('permission.authorities');
 
-        $listPermission = [];
-        $adminPermissions = [];
-        $userPermissions = [];
-
         foreach ($authorities as $label => $permissions) {
             foreach ($permissions as $permission) {
-                $listPermission[] = [
-                    'name' => $permission,
-                    'guard_name' => 'web',
-                    'created_at' =>  date('Y-m-d H:i:s'),
-                    'updated_at' =>  date('Y-m-d H:i:s'),
-                ];
-
-                //Admin
-                $adminPermissions[] = $permission;
-
-                //User
-                if (in_array($label, ['manage_gaji_pokok_pegawai', 'manage_gaji_ttp_pegawai',  'manage_edit_profil'])) {
-                    $userPermissions[] = $permission;
-                }
+                Permission::firstOrCreate(
+                    ['name' => $permission, 'guard_name' => 'web'],
+                    ['created_at' => now(), 'updated_at' => now()]
+                );
             }
         }
 
-        //Insert permission
+        // Insert roles
+        $admin = Role::firstOrCreate(
+            ['name' => "Admin", 'guard_name' => 'web'],
+            ['created_at' => now(), 'updated_at' => now()]
+        );
 
-        Permission::insert($listPermission);
+        // Assign permissions to roles
+        $admin->syncPermissions(Permission::pluck('id'));
 
-        //Insert roles
-
-        //Admin
-        $admin = Role::create([
-            'name' => "Admin",
-            'guard_name' => 'web',
-            'created_at' =>  date('Y-m-d H:i:s'),
-            'updated_at' =>  date('Y-m-d H:i:s'),
-        ]);
-
-        //User
-        $user = Role::create([
-            'name' => "User",
-            'guard_name' => 'web',
-            'created_at' =>  date('Y-m-d H:i:s'),
-            'updated_at' =>  date('Y-m-d H:i:s'),
-        ]);
-
-        //Role -> permission
-        $admin->givePermissionTo($adminPermissions);
-        $user->givePermissionTo($userPermissions);
-
-        //
+        // Assign role to a user
         $userAdmin = User::find(1)->assignRole("Admin");
     }
+
 }

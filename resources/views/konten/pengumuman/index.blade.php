@@ -43,7 +43,7 @@
                                   <i class="fas fa-edit"></i>
                               </a>
                               <!-- delete -->
-                              <form class="d-inline" role="alert" action="{{route('pengumuman.delete',['pengumuman' => $p])}}" method="POST" alert-title = "Hapus Foto?" alert-text = "Apakah anda yakin ingin menghapus data ini?">
+                              <form class="d-inline" role="alert" action="{{route('pengumuman.destroy',['pengumuman' => $p])}}" method="POST" alert-title = "Hapus Pengumuman?" alert-text = "Apakah anda yakin ingin menghapus data ini?">
                               @csrf
                               @method('DELETE')
                                   <button type="submit" class="btn btn-sm btn-danger">

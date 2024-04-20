@@ -26,12 +26,11 @@
 	                  </form>
 	               </div>
 	               <div class="col-md-6">
-	               	@can('user_create')
 	               		<a href="{{route('user.create')}}" class="btn btn-success float-right" role="button">
 	                     Tambah Data
 		                     <i class="fas fa-plus-square"></i>
 		                 </a>
-	               	@endcan
+	               	
 	               </div>
 	            </div>
 	         </div>
@@ -80,13 +79,11 @@
 					         </div>
 					         <div class="float-right">
 					            <!-- edit -->
-					            @can('user_update')
 					            	<a href="{{route('user.edit', ['user' => $user])}}" class="btn btn-sm btn-info" role="button">
 					               		<i class="fas fa-edit"></i>
 					            	</a>
-	               				@endcan
+	               				
 					            <!-- delete -->
-					            @can('user_delete')
 					            	<form class="d-inline" role="alert" action="{{route('user.destroy',['user' => $user])}}"method="POST" alert-title = "Hapus User?" alert-text = "Apakah anda yakin ingin mengahpus data ini?">
 		                              @csrf
 		                              @method('DELETE')
@@ -94,7 +91,7 @@
 		                                 <i class="fas fa-trash"></i>
 		                              </button>
 		                           </form>
-	               				@endcan
+	               				
 					         </div>
 					      </div>
 					   </div>

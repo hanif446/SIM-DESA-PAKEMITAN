@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengaduan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PengaduanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:pengaduan_show', ['only' => 'index']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,12 @@ class PengaduanController extends Controller
      */
     public function index()
     {
-        //
+        $pengaduan = Pengaduan::orderBy('created_at', 'DESC')
+               ->get();
+
+        return view('pengaduan.index', [
+            'pengaduan' => $pengaduan
+        ]);
     }
 
     /**

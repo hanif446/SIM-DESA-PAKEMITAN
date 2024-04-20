@@ -26,6 +26,11 @@ Route::get('/struktur-organisasi', [\App\Http\Controllers\HomeController::class,
 Route::get('/perangkat-desa', [\App\Http\Controllers\HomeController::class, 'perangkat_desa'])->name('homepage.perangkat_desa');
 Route::get('/kontak', [\App\Http\Controllers\HomeController::class, 'kontak'])->name('homepage.kontak');
 Route::get('/galeri-desa', [\App\Http\Controllers\HomeController::class, 'galeri'])->name('homepage.galeri');
+Route::get('/agenda-kegiatan-desa', [\App\Http\Controllers\HomeController::class, 'agenda'])->name('homepage.agenda-kegiatan-desa');
+Route::get('/pengumuman-desa', [\App\Http\Controllers\HomeController::class, 'pengumuman'])->name('homepage.pengumuman-desa');
+Route::get('/pengumuman-desa/detail/{id}', [\App\Http\Controllers\HomeController::class, 'pengumuman_detail'])->name('homepage.pengumuman-detail');
+Route::get('/pengaduan-masyarakat', [\App\Http\Controllers\HomeController::class, 'pengaduan'])->name('homepage.pengaduan-masyarakat');
+Route::post('/pengaduan-masyarakat/store', [\App\Http\Controllers\HomeController::class, 'store_pengaduan'])->name('homepage.pengaduan-store');
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']],function(){
     //dashboard
@@ -94,6 +99,9 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth']],function(){
 
     // agenda
     Route::resource('/agenda', \App\Http\Controllers\AgendaController::class);
+
+    // pengaduan
+    Route::resource('/pengaduan', \App\Http\Controllers\PengaduanController::class);
 
     //roles
     Route::get('/roles/select', [\App\Http\Controllers\RoleController::class, 'select'])->name('roles.select');

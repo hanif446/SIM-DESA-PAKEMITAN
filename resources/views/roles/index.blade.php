@@ -27,12 +27,10 @@
                   </form>
                </div>
                <div class="col-md-6">
-                @can('role_create')
                   <a href="{{ route('roles.create') }}" class="btn btn-success float-right" role="button">
                      Tambah Data
                      <i class="fas fa-plus-square"></i>
                   </a>
-                @endcan
                </div>
             </div>
          </div>
@@ -46,20 +44,18 @@
                         </label>
                         <div>
                         	<!-- detail -->
-                          @can('role_detail')
                             <a href="{{ route('roles.show', ['role'=> $role ]) }}" class="btn btn-sm btn-warning"
                              role="button">
                                <i class="fas fa-eye"></i>
                             </a>
-                          @endcan
+                          
                           <!-- edit -->
-                          @can('role_create')
                             <a href="{{ route('roles.edit', ['role'=> $role ]) }}" class="btn btn-sm btn-info" role="button">
                                 <i class="fas fa-edit"></i>
                              </a>
-                          @endcan
+                          
                           <!-- delete -->
-                          @can('role_create')
+                          
                             <form class="d-inline" role="alert" action="{{route('roles.destroy',['role' => $role])}}"method="POST" alert-title = "Hapus Role?" alert-text = "Apakah anda yakin ingin menghapus data ini?">
                               @csrf
                               @method('DELETE')
@@ -67,7 +63,7 @@
                                  <i class="fas fa-trash"></i>
                               </button>
                            </form>
-                          @endcan
+                          
                         </div>
                      </li>
                @empty

@@ -11,6 +11,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class KKController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:kk_show', ['only' => 'index']);
+    }
     /**
      * Display a listing of the resource.
      *

@@ -10,6 +10,10 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class PembayaranController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:pembayaran_show', ['only' => 'index']);
+    }
     /**
      * Display a listing of the resource.
      *

@@ -4,9 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pengumuman;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PengumumanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:pengumuman_show', ['only' => 'index']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,7 +49,39 @@ class PengumumanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validation
+        $validator = Validator::make(
+            $request->all(),
+            [
+                  "judul" => 'required',
+                  "isi_pengumuman" => 'required',
+                  "penerbit" => 'required',
+                  "gambar" => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            ],
+        );
+
+        DB::beginTransaction();
+        try {
+            $gambar = $request->file('gambar');
+        
+            $imageName = time().'.'.$gambar->extension(); 
+            $gambar->move(public_path('pengumuman'), $imageName);
+        
+            $pengumuman= Pengumuman::create([
+                'judul' => $request->judul,
+                'isi_pengumuman'  => $request->isi_pengumuman,
+                'gambar' => $imageName,
+                'penerbit'  => $request->penerbit
+            ]);
+
+            return redirect()->route('pengumuman.index')->with('message', ' Data berhasil disimpan! ');
+
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        } finally {
+            DB::commit();
+        }
     }
 
     /**
@@ -60,9 +101,11 @@ class PengumumanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Pengumuman $pengumuman)
     {
-        //
+        return view('konten.pengumuman.edit', [
+            'pengumuman' => $pengumuman
+        ]);
     }
 
     /**
@@ -72,9 +115,47 @@ class PengumumanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Pengumuman $pengumuman)
     {
-        //
+        //validation
+        $validator = Validator::make(
+            $request->all(),
+            [
+                  "judul" => 'required',
+                  "isi_pengumuman" => 'required',
+                  "penerbit" => 'required',
+                  "gambar" => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            ],
+        );
+
+        DB::beginTransaction();
+        try {
+            if ($request->hasFile('gambar')) {
+                $oldImageName = $pengumuman->gambar;
+                if ($oldImageName && file_exists(public_path('pengumuman/'.$oldImageName))) {
+                    unlink(public_path('pengumuman/'.$oldImageName));
+                }
+                // Mengunggah gambar baru dan menyimpan data pengumuman
+                $gambar = $request->file('gambar');
+                $imageName = time().'.'.$gambar->extension(); 
+                $gambar->move(public_path('pengumuman'), $imageName); 
+                $pengumuman->gambar = $imageName;
+            }
+        
+            $pengumuman->update([
+                'judul' => $request->judul,
+                'isi_pengumuman'  => $request->isi_pengumuman,
+                'penerbit'  => $request->penerbit
+            ]);
+
+            return redirect()->route('pengumuman.index')->with('message', ' Data berhasil diubah! ');
+
+        } catch (\Throwable $th) {
+            DB::rollback();
+            return redirect()->back()->withInput($request->all())->withErrors($validator);
+        } finally {
+            DB::commit();
+        }
     }
 
     /**
@@ -83,8 +164,28 @@ class PengumumanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Pengumuman $pengumuman)
     {
-        //
+
+        DB::beginTransaction();
+        try {
+
+            if ($pengumuman->gambar) {
+                $gambarPath = public_path('pengumuman/'.$pengumuman->gambar);
+                if (file_exists($gambarPath)) {
+                    unlink($gambarPath);
+                }
+            }
+            
+            $pengumuman->delete();
+
+            return redirect()->back()->with('message','Data berhasil dihapus!');
+
+        }catch (\Throwable $th){
+            DB::rollBack();
+        }finally{
+            DB::commit();
+            return redirect()->back();
+        }
     }
 }
