@@ -1,0 +1,174 @@
+.blur-image {
+    filter: blur(5px); /* Ubah nilai blur sesuai keinginan Anda */
+}
+
+.dropdown-item {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+.kotak {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border: 1px solid #ccc;
+}
+
+.img-kotak {
+  width: 100%;
+  height: auto;
+  filter: blur(5px);
+}
+
+.teks {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.isi-data{
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.visi {
+  text-align: center;
+}
+
+.visi p {
+  font-size: 25px;
+  font-weight: bold;
+  color: black;
+}
+
+.isi-visi{
+  margin-top: 30px;
+  font-size: 18px;
+}
+
+.misi {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.misi p {
+  font-size: 25px;
+  font-weight: bold;
+  color: black;
+}
+
+.isi-misi{
+  margin-top: 30px;
+  font-size: 18px;
+  text-align: justify;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+
+.konten{
+  text-align: center;
+}
+
+.isi-konten{
+  margin-top: 30px;
+  font-size: 18px;
+  text-align: justify;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.konten-maps{
+  text-align: center;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.img-struktur-organisasi{
+  width: 100%;
+  height: auto;
+}
+
+.kotak-gambar {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Mengatur grid untuk 4 gambar per baris */
+  gap: 20px; /* Jarak antar kotak */
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.kotak-pegawai {
+  width: 100%; /* Agar gambar mengisi kotak */
+  border: 1px solid #ccc; /* Atur border */
+  border-radius: 5px; /* Bulatan sudut kotak */
+  overflow: hidden; /* Mengatur agar konten tidak keluar dari kotak */
+}
+
+.kotak-pegawai img {
+  /* max-height: 350px;  */
+  height: 300px;
+  width: 100%; /* Agar gambar mengisi kotak */
+  display: block; /* Agar gambar muncul dengan benar */
+}
+
+.keterangan {
+  padding: 10px; /* Ruang di sekitar teks */
+  background-color: #f4f4f4; /* Warna latar belakang keterangan */
+}
+
+.keterangan h3 {
+  margin: 0; /* Menghapus margin default dari judul */
+  font-size: 16px; /* Ukuran font judul */
+  color: #333; /* Warna teks judul */
+}
+
+.keterangan p {
+  margin: 5px 0 0; /* Margin atas kecil, sisanya nol */
+  font-size: 14px; /* Ukuran font paragraf */
+  color: #666; /* Warna teks paragraf */
+}
+
+.kontak {
+  margin-top: 50px;
+  font-size: 18px;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.kontak i {
+  margin-right: 15px;
+}
+
+.kontak .alamat {
+  margin-bottom: 10px;
+}
+
+.kontak .no-hp,
+.kontak .email {
+  margin-bottom: 5px;
+}
+
+.kontak span {
+  vertical-align: middle;
+}
+
+/* Mengubah warna ikon */
+.kontak i {
+  color: #007bff; /* Warna biru */
+}
+
+.kontak-table {
+  margin-top: 20px; /* Atur margin atas */
+  margin-bottom: 20px; /* Atur margin bawah */
+  margin-left: auto; /* Mengatur margin kiri */
+  margin-right: auto; /* Mengatur margin kanan */
+}
+
