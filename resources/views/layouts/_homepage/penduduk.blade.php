@@ -1,3 +1,14 @@
+@php
+    use App\Models\Penduduk;
+    use App\Models\KK;
+
+    $jumlahPenduduk = Penduduk::count();
+    $jumlahKK = KK::count();
+    $jumlahPendudukLaki = Penduduk::where('jk', '=', 'Laki-laki')->count();
+    $jumlahPendudukPerempuan = Penduduk::where('jk', '=', 'Perempuan')->count();
+
+@endphp
+
 <div class="counters section bg-defult">
     <div class="container">
       <div class="row"> 
@@ -7,7 +18,7 @@
               <i class="lni-users"></i>
             </div>                
             <div class="fact-count">
-              <h3><span class="counter">6.831</span></h3>
+              <h3><span class="counter">{{ $jumlahPenduduk }}</span></h3>
               <h4>Jumlah Penduduk</h4>
             </div>
           </div>
@@ -18,7 +29,7 @@
               <i class="lni-home"></i>
             </div>                
             <div class="fact-count">
-              <h3><span class="counter">2.739</span></h3>
+              <h3><span class="counter">{{ $jumlahKK }}</span></h3>
               <h4>Jumlah KK</h4>
             </div>
           </div>
@@ -29,7 +40,7 @@
               <i class="lni-user"></i>
             </div>                
             <div class="fact-count">
-              <h3><span class="counter">3.405</span></h3>
+              <h3><span class="counter">{{ $jumlahPendudukLaki }}</span></h3>
               <h4>Jumlah Laki-Laki</h4>
             </div>
           </div>
@@ -40,7 +51,7 @@
               <i class="lni-user"></i>
             </div>                
             <div class="fact-count">
-              <h3><span class="counter">3.426</span></h3>
+              <h3><span class="counter">{{ $jumlahPendudukPerempuan}}</span></h3>
               <h4>Jumlah Perempuan</h4>
             </div>
           </div>
