@@ -19,7 +19,7 @@
                                 <label for="input_pegawai_nip" class="font-weight-bold">
                                     NIP
                                 </label>
-                                <input id="input_pegawai_nip" value="{{old('nip')}}" name="nip" type="text" class="form-control @error('nip') is-invalid @enderror" placeholder="Input NIP"/>
+                                <input id="input_pegawai_nip" value="{{old('nip')}}" name="nip" type="text" class="form-control @error('nip') is-invalid @enderror" onkeypress="return event.charCode>=48 && event.charCode<=57"  placeholder="Input NIP"/>
                                 <!-- error message -->
                                 @error('nip')
                                   <span class="invalid-feedback">

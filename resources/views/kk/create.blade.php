@@ -16,7 +16,7 @@
                         @csrf
                         <div class="form-group">
                             <label for="no_kk" class="font-weight-bold">No KK</label>
-                            <input id="no_kk" value="{{ old('no_kk') }}" name="no_kk" type="text" class="form-control @error('no_kk') is-invalid @enderror" placeholder="Input No KK"/>
+                            <input id="no_kk" value="{{ old('no_kk') }}" name="no_kk" type="text" class="form-control @error('no_kk') is-invalid @enderror" onkeypress="return event.charCode>=48 && event.charCode<=57"  placeholder="Input No KK"/>
                             @error('no_kk')
                                 <span class="invalid-feedback">{{ $message }}</span>
                             @enderror

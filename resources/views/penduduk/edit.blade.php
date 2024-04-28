@@ -19,7 +19,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="nik" class="font-weight-bold">NIK</label>
-                                <input id="nik" value="{{ old('nik', $penduduk->nik) }}" name="nik" type="text" class="form-control @error('nik') is-invalid @enderror" placeholder="Input NIK"/>
+                                <input id="nik" value="{{ old('nik', $penduduk->nik) }}" name="nik" type="text" class="form-control @error('nik') is-invalid @enderror" onkeypress="return event.charCode>=48 && event.charCode<=57"  placeholder="Input NIK"/>
                                 @error('nik')
                                     <span class="invalid-feedback">{{ $message }}</span>
                                 @enderror

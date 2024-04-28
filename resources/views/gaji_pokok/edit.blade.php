@@ -91,7 +91,7 @@
 						<label class="font-weight-bold">
 						Jumlah Gaji
 						</label>
-						<input name="jumlah_gaji" type="text" class="form-control @error('jumlah_gaji') is-invalid @enderror" value="{{ old('jumlah_gaji', $gaji_pokok->jumlah_gaji) }}" placeholder="Input Jumlah Gaji"/>
+						<input name="jumlah_gaji" type="text" class="form-control @error('jumlah_gaji') is-invalid @enderror" value="{{ old('jumlah_gaji', $gaji_pokok->jumlah_gaji) }}" onkeypress="return event.charCode>=48 && event.charCode<=57"  placeholder="Input Jumlah Gaji"/>
 						@error('jumlah_gaji')
 							<span class="invalid-feedback">
 							<strong>
